@@ -1,0 +1,17 @@
+APIFlask==0.4.0
+apispec==4.4.0
+blinker==1.4
+certifi==2020.12.5
+click==7.1.2
+Flask==1.1.2
+Flask-HTTPAuth==4.2.0
+flask-marshmallow==0.14.0
+itsdangerous==1.1.0
+Jinja2==2.11.3
+MarkupSafe==1.1.1
+marshmallow==3.11.1
+python-dotenv==0.17.0
+six==1.15.0
+watchdog==2.0.2
+webargs==8.0.0
+Werkzeug==1.0.1
