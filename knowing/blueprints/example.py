@@ -66,7 +66,7 @@ def create_pet(data):
 @example_bp.patch('/pets/<int:pet_id>')
 @input(PetInSchema)
 @output(PetOutSchema)
-def update_pet(pet_id, data):
+def patch_pet(pet_id, data):
     pet = Pet.query.get(pet_id)
     for attr, value in data.items():
         setattr(pet, attr, value)
