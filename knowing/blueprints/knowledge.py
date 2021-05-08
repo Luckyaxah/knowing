@@ -22,12 +22,21 @@ class KnowledgeEntryOutSchema(Schema):
 
 
 @knowledge_bp.get('/knowledge_entries')
+@output(KnowledgeEntryOutSchema)
 def get_knowledge_entries():
     # tbd pagination
     kentries = KnowledgeEntry.query.all()
     kentry_schema = KnowledgeEntryOutSchema(many=True)
     ret = kentry_schema.dump(kentries)
     return {"data": ret}
+
+# another way to return many results
+
+# @knowledge_bp.get('/knowledge_entries')
+# @output(KnowledgeEntryOutSchema(many=True))
+# def get_knowledge_entries():
+#     kentries = KnowledgeEntry.query.all()
+#     return kentries
 
 @knowledge_bp.get('/knowledge_entry/<int:_id>')
 @output(KnowledgeEntryOutSchema)
