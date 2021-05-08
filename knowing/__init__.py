@@ -6,7 +6,7 @@ from knowing.settings import config
 from knowing.blueprints.example import example_bp
 from knowing.blueprints.auth import auth_bp
 from knowing.models import User
-from knowing.extensions import db
+from knowing.extensions import db, migrate
 import knowing.fakes as fakes
 
 def create_app(config_name=None):
@@ -34,6 +34,7 @@ def register_blueprints(app):
 
 def register_extensions(app):
     db.init_app(app)
+    migrate.init_app(app, db)
 
 def register_shell_context(app):
     @app.shell_context_processor
