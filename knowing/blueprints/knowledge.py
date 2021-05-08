@@ -20,6 +20,15 @@ class KnowledgeEntryOutSchema(Schema):
     content = String()
     update_time = DateTime()
 
+
+@knowledge_bp.get('/knowledge_entries')
+def get_knowledge_entries():
+    # tbd pagination
+    kentries = KnowledgeEntry.query.all()
+    kentry_schema = KnowledgeEntryOutSchema(many=True)
+    ret = kentry_schema.dump(kentries)
+    return {"data": ret}
+
 @knowledge_bp.get('/knowledge_entry/<int:_id>')
 @output(KnowledgeEntryOutSchema)
 def get_knowledge_entry(_id):
