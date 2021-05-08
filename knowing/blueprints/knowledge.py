@@ -20,12 +20,13 @@ class KnowledgeEntryOutSchema(Schema):
     content = String()
     update_time = DateTime()
 
+class PaginationInSchema(Schema):
+    page = Integer(missing=1)
+    per_page = Integer(missing=10)
 
 @knowledge_bp.get('/knowledge_entries')
-@output(KnowledgeEntryOutSchema)
-def get_knowledge_entries():
-    # tbd pagination
-    kentries = KnowledgeEntry.query.all()
+def get_knowledge_entries(page=1, pagination=10):
+    kentries = KnowledgeEntry.query.paginate(page, pagination).items
     kentry_schema = KnowledgeEntryOutSchema(many=True)
     ret = kentry_schema.dump(kentries)
     return {"data": ret}
