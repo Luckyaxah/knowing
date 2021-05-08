@@ -5,6 +5,7 @@ from apiflask import APIFlask  # step one
 from knowing.settings import config
 from knowing.blueprints.example import example_bp
 from knowing.blueprints.auth import auth_bp
+from knowing.blueprints.knowledge import knowledge_bp
 from knowing.models import User
 from knowing.extensions import db, migrate
 import knowing.fakes as fakes
@@ -31,6 +32,7 @@ def register_routes(app):
 def register_blueprints(app):
     app.register_blueprint(example_bp, url_prefix='/example')
     app.register_blueprint(auth_bp, url_prefix='/auth')
+    app.register_blueprint(knowledge_bp, url_prefix='/knowledge')
 
 def register_extensions(app):
     db.init_app(app)

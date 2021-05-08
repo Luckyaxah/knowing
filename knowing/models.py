@@ -22,7 +22,8 @@ class KnowledgeEntry(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(254), unique=True, index=True)
     content = db.Column(db.Text)
-    update_time = db.Column(db.DateTime, default=datetime.utcnow)
+    create_time = db.Column(db.DateTime, default=datetime.utcnow)
+    update_time = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
 
 
 
